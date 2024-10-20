@@ -1,0 +1,64 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Build and Deploy Zibomines into Server
+env:
+ SERVER_IP: 45.14.194.16
+ SERVER_USER: root
+ SERVER_PWD: ${SERVER_USER_PWD}
+on:
+  pull_request:
+    branches: [ "main" ]
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    
+    - uses: actions/cache@v1 # this allows for re-using node_modules caching, making builds a bit faster.
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: NPM Install
+      run: |
+        echo 'server ip ${{vars.SERVER_IP}}'
+        echo 'server user ${{vars.SERVER_USER}}'
+        echo 'server secret ${{secrets.SERVER_USER_PWD}}'
+    - name: NPM Install
+      run: npm install
+    - name: NPM Install Angular
+      run: npm install -g @angular/cli@15.0.4 > /dev/null
+    - name: NPM build Angular Production
+      run: ng build
+    - name: Compress and Copy New Files to server
+      run : |
+            cd dist/zibomines
+            tar -czvf ../../zibomines.tar.gz ./
+            cd ..
+            cd ..
+            ls
+            sudo sshpass -p ${{ secrets.SERVER_USER_PWD }} scp -v  -o StrictHostKeyChecking=no -r zibomines.tar.gz  ${{ vars.SERVER_USER }}@${{ vars.SERVER_IP }}:~
+    - name: Uncompress new Files
+      run : sudo sshpass -p ${{ secrets.SERVER_USER_PWD }} -v ssh -o StrictHostKeyChecking=no  ${{ vars.SERVER_USER }}@${{ vars.SERVER_IP }} 'tar -xzvf zibomines.tar.gz --directory /var/www/zibomines'
+    - name: Killing php server
+      run : sudo sshpass -p ${{ secrets.SERVER_USER_PWD }} -v ssh -o StrictHostKeyChecking=no  ${{ vars.SERVER_USER }}@${{ vars.SERVER_IP }} 'pkill php-fpm &'
+    - name: Run php server
+      run : sudo sshpass -p ${{ secrets.SERVER_USER_PWD }} -v ssh -o StrictHostKeyChecking=no ${{ vars.SERVER_USER }}@${{ vars.SERVER_IP }} 'cd /var/www/zibomines/assets/php && php -S 0.0.0.0:8088 & '

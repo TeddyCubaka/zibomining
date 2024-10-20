@@ -1,0 +1,278 @@
+<section class="prt-row bg-base-dark map-section overflow-hidden clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12">
+                <div class="map-contact">
+                    <!-- section title -->
+                    <div class="section-title">
+                        <div class="title-header pb-0">
+                            <h2 class="title mb-15">Contact</h2>
+                        </div>
+                    </div><!-- section title end -->
+                    <div class="map-contects mt-40">
+                        <!--<h3 class="fs-26">Need a help?</h3>-->
+                        <div class="copy-text mt-10">
+                            <p class="map-contact-link">call us on <span id="p1"><a class="text-base-skin" href="tel:+243821816662">+243 821 816 662</a></span></p>
+                            <button class="copytext" onclick="copyToClipboard('#p1')"><i class="flaticon flaticon-copy"></i></button>
+                        </div><br>
+                        <div class="copy-text copy-text-email">
+                            <p id="p2" class="map-contact-link-02 underline text-base-white"><a href="mailto:info@example.com">info&#64;zibomines.com</a></p>
+                            <button class="copytext" onclick="copyToClipboard('#p2')"><i class="flaticon flaticon-copy"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+            <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--working-process-section-->
+<section class="prt-row process-section1 clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5 col-lg-12 col-md-12">
+                <!-- section title -->
+                <div class="section-title">
+                    <div class="title-header">
+                        <h3>Our office adresses</h3>
+                        <h2 class="title">Zibo mining SARL </h2>
+                    </div>
+                </div><!-- section title end -->
+                <div class="featured-content-box-main pl-50">
+                    <div class="featured-content-box style1 process-1">
+                        <div class="featured-content">
+                            <div class="featured-title">
+                                <h3>01. Kinshasa QG</h3>
+                            </div>
+                            <div class="featured-desc">
+                                <p>Immeuble 30 juin, 2e niveau <br/>Q/ Revolution, C/ Gombe <br/> Kinshasa - DR Congo </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="featured-content-box style1 process-2">
+                        <div class="featured-content">
+                            <div class="featured-title">
+                                <h3>02. Paris</h3>
+                            </div>
+                            <div class="featured-desc">
+                                <p>Immeuble 30 juin, 2e niveau <br/>Q/ Revolution, C/ Nanterre <br/> Paris - France</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="featured-content-box style1 process-3">
+                        <div class="featured-content">
+                            <div class="featured-title">
+                                <h3>03. </h3>
+                            </div>
+                            <div class="featured-desc">
+                                <p>New York <br/>5 W. Bay Shore road <br/> Bay Shore, New-york / USA</p>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div> 
+            <div class="col-xl-7 col-lg-12 col-md-12">
+                <div class="contact-form-main res-1199-mt-50">
+                    <div class="contact-title">
+                        <img height="60" width="60" class="img-fluid auto_size" src="assets/images/icon-02.png" alt="image">
+                        <h3>Contact us </h3>
+                    </div>
+                    <div id="comments" class="comments-area style1 res-1199-pt-30">
+                        <!-- <div class="comment-respond">
+                            <form action="assets/php/mail.php" method="post" id="commentform" class="comment-form comment-form-1">
+                                <p class="comment-form-author">
+                                    <input id="author" placeholder="Your name*" name="name" type="text" value="" size="30" aria-required="true" required>
+                                </p>
+                                <p class="comment-form-email">
+                                    <input id="email" placeholder="Email address*" name="email" type="text" value="" size="30" aria-required="true" required>
+                                </p>
+                                <p class="comment-form-number">
+                                    <input id="number" placeholder="Phone number*" name="phone" type="text" value="" size="30" aria-required="true" required>
+                                </p>
+                                <p class="comment-form-url">
+                                    <input id="code" placeholder="Compagny namz*" name="code" type="text" value="" size="30" >
+                                </p>
+                                <h3>Subject</h3>
+                                <p class="comment-form-subject">
+                                    <input id="subject" placeholder="Your subject*" name="subject"  aria-required="true" required/>
+                                </p>
+                                <h3>Comments</h3>
+                                <p class="comment-form-comment">
+                                    <textarea id="comment" placeholder="Your message here*" name="message" cols="45" rows="9" aria-required="true" required></textarea>
+                                </p>
+                               
+                                <p class="form-submit cookies mb-0 headingfont-color d-flex align-items-center">
+                                    <button class="submit prt-btn prt-btn-size-md prt-btn-shape-round prt-btn-style-fill prt-btn-color-skincolor mr-25 res-575-mb-10" type="submit"><span>Send mail</span></button>
+                                    
+                                </p>
+                            </form>
+                        </div> -->
+                        
+                        <div class="comment-respond">
+                            <h2>Contactez-nous</h2>
+                          
+                            <!-- Affichage des messages de succès ou d'erreur -->
+                            <div *ngIf="successMessage" class="success-message">
+                              {{ successMessage }}
+                            </div>
+                          
+                            <div *ngIf="errorMessage" class="error-message">
+                              {{ errorMessage }}
+                            </div>
+                          
+                            <!-- Formulaire de contact -->
+                            <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+                              <div class="row">
+                                <div class="form-group col-md-6">
+                                  <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    class="form-control"
+                                    [(ngModel)]="name"
+                                    required
+                                    placeholder="Your name*"
+                                  />
+                                </div>
+                                <div class="form-group col-md-6">
+                                  <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    class="form-control"
+                                    [(ngModel)]="email"
+                                    required
+                                    placeholder="Email address*"
+                                  />
+                                </div>
+                              </div>
+                          
+                              <div class="row">
+                                <div class="form-group col-md-6">
+                                  <input
+                                    type="text"
+                                    id="phone"
+                                    name="phone"
+                                    class="form-control"
+                                    [(ngModel)]="phone"
+                                    placeholder="Phone number*"
+                                  />
+                                </div>
+                                <div class="form-group col-md-6">
+                                  <input
+                                    type="text"
+                                    id="company"
+                                    name="company"
+                                    class="form-control"
+                                    [(ngModel)]="company"
+                                    placeholder="Company name*"
+                                  />
+                                </div>
+                              </div>
+                          
+                              <div class="form-group">
+                                <input
+                                  type="text"
+                                  id="subject"
+                                  name="subject"
+                                  class="form-control"
+                                  [(ngModel)]="subject"
+                                  required
+                                  placeholder="Your subject*"
+                                />
+                              </div>
+                          
+                              <div class="form-group">
+                                <textarea
+                                  id="message"
+                                  name="message"
+                                  class="form-control"
+                                  [(ngModel)]="message"
+                                  required
+                                  placeholder="Your message here*"
+                                ></textarea>
+                              </div>
+                          
+                              <!-- Bouton d'envoi avec loader -->
+                              <button type="submit" class="btn btn-primary" [disabled]="!contactForm.valid || loading">
+                                <span *ngIf="loading" class="loader"></span>
+                                <span *ngIf="!loading">Send Mail</span>
+                              </button>
+                            </form>
+                          </div>
+                                                 
+                        <div class="mt-45">
+                           <!-- <h3>Share Info</h3>-->
+                            <ul class="social-icons contact-link">
+                                <li><a href="" rel="noopener" aria-label="facebook"><i class="fa fa-facebook"></i>Facebook</a></li>
+                                <li><a href="" rel="noopener" aria-label="twitter"><i class="fa fa-twitter"></i>Twitter</a></li>
+                                <li><a href="" rel="noopener" aria-label="linkedin"><i class="fa fa-linkedin"></i>Linkedin</a></li>
+                                <li><a href="" rel="noopener" aria-label="dribbble"><i class="fa fa-dribbble"></i>Dribbble</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>                       
+        </div>
+    </div>
+</section>
+<!--working-process-section end-->
+
+<!--padding_zero-section-->
+<section class="prt-row map-contact-1 padding_zero-section clearfix">
+    <div class="container">
+        <!-- row -->
+        <div class="row align-items-center"> 
+            <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12">
+                <div id="google_map" class="google_map">
+                    <div class="map_container style2">
+                        <div id="map">
+                            <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" width="1920" height="952" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=photo%20guy+(Zibo%20mining)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/distance-area-calculator.html">distance maps</a></iframe>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12">
+                <div class="pl-40 res-1199-pl-0 res-1199-pt-30">
+                    <div class="border-bottom pb-15">
+                        <!-- section title -->
+                        <div class="section-title">
+                            <div class="title-header">
+                                
+                                <h2 class="title">We look forward to exploring together!</h2>
+                            </div>
+                            
+                        </div><!-- section title end -->
+                    </div>
+
+                    <div class="row mt-50 res-1199-mb-50 res-575-mt-0">
+                        <!--
+
+                        
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                        
+                            <div class="map-link">
+                                <h3 class="fs-20">Got a questions?</h3>
+                                <p>Drop us an email and we’ll be in touch</p>
+                               
+                                <a class="map-contact-link-02 underline" href="mailto:contact@mining.com">info&#64;zibomines.com </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="address res-767-pt-30">
+                                <h3 class="fs-20">Need a help?</h3>
+                                <p>Immeuble 30 juin, 2e niveau <br/>Q/ Revolution, C/ Gombe <br/> Kinshasa - DR Congo</p>
+                            </div>
+                           
+                        </div>-->
+                    </div>
+                    
+                </div>
+            </div>                    
+        </div>
+        <!-- row end -->
+    </div>
+</section>

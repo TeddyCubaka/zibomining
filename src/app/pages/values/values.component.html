@@ -1,0 +1,58 @@
+  <!-- page-title -->
+  <div class="prt-page-title-row">
+    <div class="prt-page-title-row-inner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="prt-page-title-row-heading">
+                        <div class="page-title-heading">
+                            <h2 class="title">Values</h2>
+                        </div>
+                        <div class="breadcrumb-wrapper">
+                            <a href="#sidebar"><i class="ti-arrow-down"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>                    
+</div>
+<!-- page-title end -->
+
+<!--site-main start-->
+<div class="site-main bg-white">
+
+    <div id="sidebar" class="prt-row sidebar prt-sidebar-left clearfix">
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-lg-4 widget-area sidebar-left prt-sticky-column">
+                    <div>
+                        <aside class="widget widget-nav-menu with-title">
+                            <div>
+                                <h3 class="widget-title mb-30"> List</h3>
+                                <ul>
+                                    <li  [ngClass]="currentValue == 'HEALTH'? 'active' : ''"><i class="flaticon flaticon-mining-cart-1"></i><a href="/values?q=health"> Health and Safe </a></li>
+                                    <li [ngClass]="currentValue == 'RESPONSIBLE'? 'active' : ''"><i class="flaticon flaticon-crane-truck" ></i><a href="/values?q=responsible"> Responsible Production </a></li>
+                                    <li [ngClass]="currentValue == 'INDIFENOUS'? 'active' : ''"><i class="flaticon flaticon-gold" ></i><a href="/values?q=indigenous">Ingenious peoples </a></li>
+                                    <li [ngClass]="currentValue == 'PEOPLE'? 'active' : ''"><i class="flaticon flaticon-search"></i><a href="/values?q=people"> Communities People </a></li>
+                                    <li [ngClass]="currentValue == 'TRAILINGS'? 'active' : ''"><i class="flaticon flaticon-pickaxe"></i><a href="/values?q=trailings"> Trailings management </a></li>
+                                    
+                                </ul>
+                            </div>
+                            
+                        </aside>
+                    </div>
+                </div>
+                <div class="col-lg-8 content-area">
+                    <div class="prt-service-single-content-area">
+                        <div class="prt-service-description">
+                           <ng-template #values></ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- row end -->
+        </div>
+    </div>
+
+</div><!--site-main end-->

@@ -1,0 +1,1 @@
+cd /var/www/zibomines/assets/php && php -S 0.0.0.0:8088 &
